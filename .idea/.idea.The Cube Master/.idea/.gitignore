@@ -1,0 +1,20 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/.idea.The Cube Master.iml
+/projectSettingsUpdater.xml
+
+# Editor-based HTTP Client requests
+/httpRequests/
+
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# Unity
+/Library/PackageCache/    # זה מכסה את C:\Work\Unity\The-Cube-Master\Library\PackageCache
+/Library/                  # מומלץ להתעלם מכל Library
