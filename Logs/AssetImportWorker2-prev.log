@@ -1,33 +1,33 @@
 [Licensing::Module] Trying to connect to existing licensing client channel...
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-B" at "2025-09-18T09:06:53.6082473Z"
-Built from '6000.2/staging' branch; Version is '6000.2.4f1 (17550c9bb584) revision 1529100'; Using compiler version '194234433'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'he' Physical Memory: 16227 MB
+Built from '6000.2/staging' branch; Version is '6000.2.5f1 (43d04cd1df69) revision 4444236'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26100) 64bit Core' Language: 'he' Physical Memory: 16183 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
-Date: 2025-09-18T09:06:53Z
+Date: 2025-09-20T14:51:17Z
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-avish" at "2025-09-20T14:51:17.7994975Z"
 
 COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\6000.2.4f1\Editor\Unity.exe
+C:\Program Files\Unity\Hub\Editor\6000.2.5f1-x86_64\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker2
 -projectPath
-C:/Work/Unity/The-Cube-Master
+C:/Users/avish/Dev/TheCubeMaster
 -logFile
 Logs/AssetImportWorker2.log
 -srvPort
-60191
+59340
 -job-worker-count
-9
+3
 -background-job-worker-count
 8
 -gc-helper-count
 1
 -name
 AssetImport
-Successfully changed project path to: C:/Work/Unity/The-Cube-Master
-C:/Work/Unity/The-Cube-Master
+Successfully changed project path to: C:/Users/avish/Dev/TheCubeMaster
+C:/Users/avish/Dev/TheCubeMaster
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-allocator-temp-initial-block-size-main=262144"
     "memorysetup-allocator-temp-initial-block-size-worker=262144"
@@ -63,35 +63,39 @@ C:/Work/Unity/The-Cube-Master
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [19304]  Target information:
+Player connection [4492]  Target information:
 
-Player connection [19304]  * "[IP] 192.168.20.8 [Port] 0 [Flags] 2 [Guid] 4289967282 [EditorId] 4289967282 [Version] 1048832 [Id] WindowsEditor(7,HangashaPC3) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [4492]  * "[IP] 192.168.253.1 [Port] 0 [Flags] 2 [Guid] 2831596720 [EditorId] 2831596720 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-P5UJTVO7) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [19304] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [19304] Host joined alternative multi-casting on [225.0.0.222:34997]...
-JobSystem: Creating JobQueue using job-worker-count value 9
+Player connection [4492]  * "[IP] 192.168.197.1 [Port] 0 [Flags] 2 [Guid] 2831596720 [EditorId] 2831596720 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-P5UJTVO7) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [4492]  * "[IP] 192.168.68.59 [Port] 0 [Flags] 2 [Guid] 2831596720 [EditorId] 2831596720 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-P5UJTVO7) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [4492] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [4492] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 3
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
-[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 24844, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 29548, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
 [Licensing::Module] LicensingClient has failed validation; ignoring
 [Licensing::Client] Error: HandshakeResponse reported an error:
 	ResponseCode: 505
 	ResponseStatus: Unsupported protocol version '1.17.2'.
-[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-B"
-[Licensing::IpcConnector] LicenseClient-B channel disconnected successfully.
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-B-6000.2.4" at "2025-09-18T09:06:53.7436088Z"
-[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 3312, path: "C:/Program Files/Unity/Hub/Editor/6000.2.4f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-avish"
+[Licensing::IpcConnector] LicenseClient-avish channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-avish-6000.2.5" at "2025-09-20T14:51:18.652172Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 13532, path: "C:/Program Files/Unity/Hub/Editor/6000.2.5f1-x86_64/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
 [Licensing::Module] LicensingClient has failed validation; ignoring
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.17.2+ff71f16
-  Session Id:              2727fb72c26e4f8e8226fc13dfa702bb
-  Correlation Id:          42954fa06b4ae390838205425ec64015
-  External correlation Id: 5172246108692891990
-  Machine Id:              lBzIHGT6V3Ad16mGxSMPaMIfeiU=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-B-6000.2.4" (connect: 0.00s, validation: 0.00s, handshake: 0.03s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-B-6000.2.4-notifications" at "2025-09-18T09:06:53.7823532Z"
-[Licensing::Module] Licensing Background thread has ended after 0.17s
+  Session Id:              5bf6842352aa443393c2ea99ca8ba4d7
+  Correlation Id:          a01cebe6844e81efb2e5d88de919f7a9
+  External correlation Id: 2374630648483882427
+  Machine Id:              qRyAZDbhNLdGNUa8qw1hsW9NOD0=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-avish-6000.2.5" (connect: 0.00s, validation: 0.01s, handshake: 0.18s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-avish-6000.2.5-notifications" at "2025-09-20T14:51:18.8514876Z"
+[Licensing::Module] Licensing Background thread has ended after 1.11s
 Library Redirect Path: Library/
 [Physics::Module] Selected backend.
 [Physics::Module] Name: PhysX
@@ -99,63 +103,63 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 105.75 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 112.57 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Initialize engine version: 6000.2.4f1 (17550c9bb584)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.2.4f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Work/Unity/The-Cube-Master/Assets
+Initialize engine version: 6000.2.5f1 (43d04cd1df69)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.2.5f1-x86_64/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/avish/Dev/TheCubeMaster/Assets
 GfxDevice: creating device client; kGfxThreadingModeNonThreaded
-d3d12: failed to query info queue interface (0x80004002).
+d3d12: failed to create D3D12 device (0x887a0004).
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
 Direct3D:
-    Version:         Direct3D 12 [level 12.1]
-    Renderer:        NVIDIA GeForce RTX 3060 (ID=0x2504)
-    Vendor:          NVIDIA
-    VRAM:            12143 MB
-    App VRAM Budget: 11375 MB
-    Driver:          30.0.14.7280
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Microsoft Basic Render Driver (ID=0x8c)
+    Vendor:   Microsoft
+    VRAM:     8091 MB
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.2.4f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.2.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.2.4f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56424
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.2.5f1-x86_64/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.2.5f1-x86_64/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.2.5f1-x86_64/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56948
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.2.4f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
-Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.2.4f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002331 seconds.
-- Loaded All Assemblies, in  1.276 seconds
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.2.5f1-x86_64/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.2.5f1-x86_64/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.015319 seconds.
+- Loaded All Assemblies, in  2.667 seconds
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.425 seconds
-Domain Reload Profiling: 1700ms
-	BeginReloadAssembly (226ms)
+- Finished resetting the current domain, in  2.815 seconds
+Domain Reload Profiling: 5470ms
+	BeginReloadAssembly (1036ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (199ms)
-	RebuildNativeTypeToScriptingClass (16ms)
-	initialDomainReloadingComplete (56ms)
-	LoadAllAssembliesAndSetupDomain (777ms)
-		LoadAssemblies (226ms)
+		CreateAndSetChildDomain (3ms)
+	RebuildCommonClasses (296ms)
+	RebuildNativeTypeToScriptingClass (111ms)
+	initialDomainReloadingComplete (636ms)
+	LoadAllAssembliesAndSetupDomain (573ms)
+		LoadAssemblies (1018ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (770ms)
-			TypeCache.Refresh (768ms)
-				TypeCache.ScanAssembly (751ms)
+		AnalyzeDomain (561ms)
+			TypeCache.Refresh (557ms)
+				TypeCache.ScanAssembly (511ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (426ms)
+	FinalizeReload (2817ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (374ms)
+		SetupLoadedEditorAssemblies (2585ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (66ms)
-			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (80ms)
-			ProcessInitializeOnLoadAttributes (146ms)
-			ProcessInitializeOnLoadMethodAttributes (75ms)
+			InitializePlatformSupportModulesInManaged (198ms)
+			SetLoadedEditorAssemblies (13ms)
+			BeforeProcessingInitializeOnLoad (287ms)
+			ProcessInitializeOnLoadAttributes (1857ms)
+			ProcessInitializeOnLoadMethodAttributes (231ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -170,65 +174,62 @@ Begin MonoManager ReloadAssembly
   Product: Unity Personal
   Type: Assigned
   Expiration: Unlimited
-- Loaded All Assemblies, in  1.032 seconds
-Refreshing native plugins compatible for Editor in 1.60 ms, found 3 plugins.
+- Loaded All Assemblies, in  4.516 seconds
+Refreshing native plugins compatible for Editor in 8.12 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Package Manager log level set to [2]
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.042 seconds
-Domain Reload Profiling: 2069ms
-	BeginReloadAssembly (220ms)
+- Finished resetting the current domain, in  2.569 seconds
+Domain Reload Profiling: 7050ms
+	BeginReloadAssembly (2042ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (12ms)
+		DisableScriptedObjects (36ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (30ms)
-	RebuildCommonClasses (39ms)
-	RebuildNativeTypeToScriptingClass (15ms)
-	initialDomainReloadingComplete (46ms)
-	LoadAllAssembliesAndSetupDomain (707ms)
-		LoadAssemblies (551ms)
+		CreateAndSetChildDomain (114ms)
+	RebuildCommonClasses (532ms)
+	RebuildNativeTypeToScriptingClass (54ms)
+	initialDomainReloadingComplete (440ms)
+	LoadAllAssembliesAndSetupDomain (1410ms)
+		LoadAssemblies (2712ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (276ms)
-			TypeCache.Refresh (199ms)
-				TypeCache.ScanAssembly (183ms)
-			BuildScriptInfoCaches (57ms)
-			ResolveRequiredComponents (14ms)
-	FinalizeReload (1042ms)
+		AnalyzeDomain (302ms)
+			TypeCache.Refresh (270ms)
+				TypeCache.ScanAssembly (232ms)
+			BuildScriptInfoCaches (22ms)
+			ResolveRequiredComponents (2ms)
+	FinalizeReload (2572ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (774ms)
+		SetupLoadedEditorAssemblies (1982ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (8ms)
-			BeforeProcessingInitializeOnLoad (190ms)
-			ProcessInitializeOnLoadAttributes (502ms)
-			ProcessInitializeOnLoadMethodAttributes (63ms)
-			AfterProcessingInitializeOnLoad (8ms)
+			InitializePlatformSupportModulesInManaged (13ms)
+			SetLoadedEditorAssemblies (16ms)
+			BeforeProcessingInitializeOnLoad (1003ms)
+			ProcessInitializeOnLoadAttributes (719ms)
+			ProcessInitializeOnLoadMethodAttributes (131ms)
+			AfterProcessingInitializeOnLoad (100ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (7ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 1.34 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (99ms)
+WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/Terrain/Lit (Base Pass)' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/Terrain/Lit (Base Pass)' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/Terrain/Lit' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/Terrain/Lit' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 56.48 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6138 unused Assets / (4.8 MB). Loaded Objects now: 6851.
-Memory consumption went from 134.0 MB to 129.2 MB.
-Total: 9.975500 ms (FindLiveObjects: 1.469900 ms CreateObjectMapping: 0.480400 ms MarkObjects: 5.520200 ms  DeleteObjects: 2.503200 ms)
+Unloading 34 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6072 unused Assets / (5.0 MB). Loaded Objects now: 6627.
+Memory consumption went from 111.7 MB to 106.6 MB.
+Total: 45.017100 ms (FindLiveObjects: 1.809500 ms CreateObjectMapping: 10.425400 ms MarkObjects: 18.334700 ms  DeleteObjects: 14.444800 ms)
 
-========================================================================
-Received Import Request.
-  Time since last request: 585274.632891 seconds.
-  path: Assets/Cartoon Capsule Pack Lite/Materials/capsule material base.mat
-  artifactKey: Guid(4c70cf4666a5b1a4dad445d144b3aacf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Cartoon Capsule Pack Lite/Materials/capsule material base.mat using Guid(4c70cf4666a5b1a4dad445d144b3aacf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fa904bd709d32b7e742dbc1678460a9f') in 0.830899 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0

@@ -20,8 +20,8 @@ public class PlayerMovment : MonoBehaviour
     [Header("Camera")]
     public Transform cameraTransform; // גרור Main Camera; אם ריק—נאתר לבד
 
-    Rigidbody rb;
-    Collider col;
+    Rigidbody _rb;
+    Collider _col;
 
     // נאגרים ב-Update כדי לא לפספס פריימים בפיזיקה
     bool jumpQueued;
@@ -29,8 +29,8 @@ public class PlayerMovment : MonoBehaviour
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
+        _rb = GetComponent<Rigidbody>();
+        _col = GetComponent<Collider>();
         if (cameraTransform == null && Camera.main != null)
             cameraTransform = Camera.main.transform;
     }
@@ -63,7 +63,7 @@ public class PlayerMovment : MonoBehaviour
 
         // מהירות יעד והאצה/בלימה חלקה
         Vector3 targetPlanarVel = wish * speed;
-        Vector3 vel = rb.linearVelocity;
+        Vector3 vel = _rb.linearVelocity;
         Vector3 planar = new Vector3(vel.x, 0f, vel.z);
         Vector3 newPlanar = Vector3.MoveTowards(planar, targetPlanarVel, acceleration * Time.fixedDeltaTime);
         vel.x = newPlanar.x;
@@ -74,12 +74,12 @@ public class PlayerMovment : MonoBehaviour
         {
             jumpQueued = false; // צורכים את הלחיצה
             vel.y = 0f; // כדי לקבל גובה עקבי
-            rb.linearVelocity = vel;
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+            _rb.linearVelocity = vel;
+            _rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
         }
         else
         {
-            rb.linearVelocity = vel;
+            _rb.linearVelocity = vel;
         }
 
         // סיבוב יציב (לא כשצועדים אחורה, אם רוצים להימנע מסיבובים)
@@ -104,7 +104,7 @@ public class PlayerMovment : MonoBehaviour
     bool IsGrounded()
     {
         // בדיקה יציבה לפי גודל הקוליידר: SphereCast קצר למטה
-        var b = col.bounds;
+        var b = _col.bounds;
         float radius = Mathf.Max(0.05f, Mathf.Min(b.extents.x, b.extents.z) - 0.01f);
         Vector3 origin = new Vector3(b.center.x, b.min.y + radius + 0.02f, b.center.z);
         return Physics.SphereCast(origin, radius, Vector3.down, out _, groundCheckDistance, groundMask, QueryTriggerInteraction.Ignore);
