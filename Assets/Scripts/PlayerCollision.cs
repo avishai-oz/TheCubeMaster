@@ -1,19 +1,29 @@
 using UnityEngine;
 
-/*[RequireComponent(typeof(Collider))]
-[RequireComponent(typeof(Rigidbody))]*/
-public class PlayerCollision : MonoBehaviour
-{
-    private void OnTriggerEnter(Collider other)
+
+    /// מזהה כניסה ל-Trigger, שואל את ה-Provider על ההקשר, ומפעיל את האיסוף.
+    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(ICollectContextProvider))]
+    public class PlayerCollision : MonoBehaviour
     {
-        var behaviours = other.GetComponents<MonoBehaviour>();
-        foreach (var mb in behaviours)
+        private ICollectContextProvider _provider;
+
+        void Awake() => _provider = GetComponent<ICollectContextProvider>();
+
+        void OnTriggerEnter(Collider other)
         {
-            if (mb is ICollectible collectible)
+            if (_provider == null) return;
+            var ctx = _provider.Build();
+
+            // מוצאים כל קומפוננט שמממש ICollectible על האובייקט שפגענו בו
+            foreach (var mb in other.GetComponents<MonoBehaviour>())
             {
-                collectible.Collect(new CollectContext(gameObject));
-                break; // מספיק איסוף אחד
+                if (mb is ICollectible c)
+                {
+                    c.Collect(in ctx);
+                    break; // מספיק אחד
+                }
             }
         }
     }
-}
