@@ -14,14 +14,13 @@ using UnityEngine;
         void OnTriggerEnter(Collider other)
         {
             if (_provider == null) return;
-            var ctx = _provider.Build();
+            var playerContext = _provider.Build();
 
-            // מוצאים כל קומפוננט שמממש ICollectible על האובייקט שפגענו בו
             foreach (var mb in other.GetComponents<MonoBehaviour>())
             {
                 if (mb is ICollectible c)
                 {
-                    c.Collect(in ctx);
+                    c.Collect(in playerContext);
                     break; // מספיק אחד
                 }
             }

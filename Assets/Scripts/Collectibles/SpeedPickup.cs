@@ -10,10 +10,10 @@ using UnityEngine;
 
         void Reset() => GetComponent<Collider>().isTrigger = true;
 
-        public void Collect(in CollectContext ctx)
+        public void Collect(in CollectContext playerContext)
         {
-            if (ctx.Power != null)
-                ctx.Power.Apply(PowerupTypes.PowerupType.Speed, multiplier, durationSeconds);
+            if (playerContext.Power != null)
+                playerContext.Power.Apply(PowerupTypes.PowerupType.Speed, multiplier, durationSeconds);
             else
                 Debug.LogWarning("No PowerupManager on Player; SpeedPickup ignored.", this);
 

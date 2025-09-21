@@ -2,10 +2,9 @@ using System;
 using UnityEngine;
 public interface ICollectible
 {
-    void Collect(in CollectContext ctx);
+    void Collect(in CollectContext playerContext);
 }
 
-/// "מכתב ליווי" לאיסופים – מה יש לשחקן להציע.
 public readonly struct CollectContext
 {
     public CollectContext(GameObject player, PowerupManager power, Action<int> addScore)

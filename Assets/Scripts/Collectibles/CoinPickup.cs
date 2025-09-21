@@ -10,9 +10,9 @@ public class CoinPickup : MonoBehaviour, ICollectible
         col.isTrigger = true;
     }
 
-    public void Collect(in CollectContext ctx)
+    public void Collect(in CollectContext playerContext)
     {
-        Debug.Log($"+{points} coin collected by {ctx.Player.name}");
+        Debug.Log($"+{points} coin collected by {playerContext.Player.name}");
         Destroy(gameObject);
     }
 }
