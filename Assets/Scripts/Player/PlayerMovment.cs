@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 public class PlayerMovment : MonoBehaviour
 {
     [Header("Move")]
@@ -8,22 +7,22 @@ public class PlayerMovment : MonoBehaviour
     public float acceleration = 12f;
 
     [Header("Facing")]
-    public bool rotateToFaceMove = true;        // כבה אם המצלמה "משתגעת"
-    public bool rotateOnlyWhenMovingForward = true; // כשהוא הולך אחורה—לא נסובב (נלך לאחור)
+    public bool rotateToFaceMove = true;        
+    public bool rotateOnlyWhenMovingForward = true; 
     public float turnSpeedDegPerSec = 180f;
 
     [Header("Jump")]
     public float jumpForce = 5.5f;
     public float groundCheckDistance = 0.25f;
-    public LayerMask groundMask = ~0; // עדיף להגדיר Layer "Ground" ולבחור אותו
+    public LayerMask groundMask = LayerMask.GetMask("Ground"); 
 
     [Header("Camera")]
-    public Transform cameraTransform; // גרור Main Camera; אם ריק—נאתר לבד
+    public Transform cameraTransform;
 
     Rigidbody _rb;
     Collider _col;
 
-    // נאגרים ב-Update כדי לא לפספס פריימים בפיזיקה
+
     bool jumpQueued;
     float inputH, inputV;
 
@@ -40,7 +39,6 @@ public class PlayerMovment : MonoBehaviour
         inputH = Input.GetAxisRaw("Horizontal");
         inputV = Input.GetAxisRaw("Vertical");
 
-        // חשוב: GetButtonDown ב-Update (לא ב-FixedUpdate) כדי לא לפספס פריים
         if (Input.GetButtonDown("Jump"))
             jumpQueued = true;
     }
@@ -48,32 +46,30 @@ public class PlayerMovment : MonoBehaviour
     void FixedUpdate()
     {
         // כיוון תנועה יחסית למצלמה
-        Vector3 wish;
+        Vector3 direction;
         if (cameraTransform != null)
         {
             Vector3 fwd = cameraTransform.forward; fwd.y = 0f; fwd.Normalize();
             Vector3 right = cameraTransform.right; right.y = 0f; right.Normalize();
-            wish = right * inputH + fwd * inputV;
+            direction = right * inputH + fwd * inputV;
         }
         else
         {
-            wish = new Vector3(inputH, 0f, inputV);
+            direction = new Vector3(inputH, 0f, inputV);
         }
-        if (wish.sqrMagnitude > 1f) wish.Normalize();
+        if (direction.sqrMagnitude > 1f) direction.Normalize();
 
-        // מהירות יעד והאצה/בלימה חלקה
-        Vector3 targetPlanarVel = wish * speed;
+        Vector3 targetPlanarVel = direction * speed;
         Vector3 vel = _rb.linearVelocity;
         Vector3 planar = new Vector3(vel.x, 0f, vel.z);
         Vector3 newPlanar = Vector3.MoveTowards(planar, targetPlanarVel, acceleration * Time.fixedDeltaTime);
         vel.x = newPlanar.x;
         vel.z = newPlanar.z;
 
-        // קפיצה
         if (jumpQueued && IsGrounded())
         {
-            jumpQueued = false; // צורכים את הלחיצה
-            vel.y = 0f; // כדי לקבל גובה עקבי
+            jumpQueued = false; 
+            vel.y = 0f; 
             _rb.linearVelocity = vel;
             _rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
         }
@@ -82,13 +78,12 @@ public class PlayerMovment : MonoBehaviour
             _rb.linearVelocity = vel;
         }
 
-        // סיבוב יציב (לא כשצועדים אחורה, אם רוצים להימנע מסיבובים)
+
         if (rotateToFaceMove)
         {
-            Vector3 faceDir = wish;
+            Vector3 faceDir = direction;
             if (rotateOnlyWhenMovingForward && inputV < 0f)
             {
-                // שומרים על הכיוון הנוכחי, הולכים לאחור בלי לסובב
                 faceDir = new Vector3(transform.forward.x, 0f, transform.forward.z);
             }
 
@@ -103,7 +98,6 @@ public class PlayerMovment : MonoBehaviour
 
     bool IsGrounded()
     {
-        // בדיקה יציבה לפי גודל הקוליידר: SphereCast קצר למטה
         var b = _col.bounds;
         float radius = Mathf.Max(0.05f, Mathf.Min(b.extents.x, b.extents.z) - 0.01f);
         Vector3 origin = new Vector3(b.center.x, b.min.y + radius + 0.02f, b.center.z);

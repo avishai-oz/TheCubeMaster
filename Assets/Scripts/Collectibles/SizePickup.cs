@@ -13,7 +13,7 @@ using UnityEngine;
         public void Collect(in CollectContext ctx)
         {
             if (ctx.Power != null)
-                ctx.Power.Apply(PowerupType.Size, multiplier, durationSeconds);
+                ctx.Power.Apply(PowerupTypes.PowerupType.Size, multiplier, durationSeconds);
             else
                 Debug.LogWarning("No PowerupManager on Player; SizePickup ignored.", this);
 

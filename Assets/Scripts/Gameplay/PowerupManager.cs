@@ -27,25 +27,33 @@ using UnityEngine;
 
         void TickType(PowerupTypes.PowerupType t, float dt, System.Action onExpire)
         {
-            if (_timeLeft[t] <= 0f) return;
+            if (_timeLeft[t] <= 0f) 
+                return;
+            
             _timeLeft[t] -= dt;
-            if (_timeLeft[t] <= 0f) { _timeLeft[t] = 0f; onExpire?.Invoke(); }
+            
+            if (_timeLeft[t] <= 0f) { 
+                _timeLeft[t] = 0f; 
+                onExpire?.Invoke(); 
+            }
         }
-
-        /// החל פאואר־אפ: קובע מכפיל ומרענן טיימר (לא מצטבר).
+        
         public void Apply(PowerupTypes.PowerupType type, float multiplier, float? durationSeconds = null)
         {
             float dur = Mathf.Max(0.01f, durationSeconds ?? defaultDurationSeconds);
 
             switch (type)
             {
-                case PowerupTypes.PowerupType.Speed: SpeedMult = Mathf.Max(0.01f, multiplier); break;
-                case PowerupTypes.PowerupType.Jump:  JumpMult  = Mathf.Max(0.01f, multiplier); break;
-                case PowerupTypes.PowerupType.Size:  SizeMult  = Mathf.Max(0.01f, multiplier); break;
+                case PowerupTypes.PowerupType.Speed: 
+                    SpeedMult = Mathf.Max(0.01f, multiplier); 
+                    break;
+                case PowerupTypes.PowerupType.Jump:  
+                    JumpMult = Mathf.Max(0.01f, multiplier); 
+                    break;
+                case PowerupTypes.PowerupType.Size:  
+                    SizeMult = Mathf.Max(0.01f, multiplier); 
+                    break;
             }
-            _timeLeft[type] = dur; // refresh
+            _timeLeft[type] = dur; 
         }
-
-        public float GetTimeLeft(PowerupTypes.PowerupType type) =>
-            _timeLeft.TryGetValue(type, out var t) ? Mathf.Max(t, 0f) : 0f;
     }

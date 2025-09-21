@@ -3,7 +3,7 @@ using UnityEngine;
 
     public class PlayerCollectContextProvider : MonoBehaviour, ICollectContextProvider
     {
-        public Action<int> AddScoreHook; // חבר ל-GameManager.AddScore או ל-Presenter
+        public Action<int> AddScoreHook;
         private PowerupManager _power;
 
         void Awake() => _power = GetComponent<PowerupManager>();

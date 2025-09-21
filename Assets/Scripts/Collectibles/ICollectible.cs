@@ -16,8 +16,8 @@ public readonly struct CollectContext
     }
 
     public GameObject Player { get; }
-    public PowerupManager Power { get; }     // יכול להיות null
-    public Action<int> AddScore { get; }     // יכול להיות null
+    public PowerupManager Power { get; }     
+    public Action<int> AddScore { get; }     
 
     public bool TryAddScore(int points)
     {
