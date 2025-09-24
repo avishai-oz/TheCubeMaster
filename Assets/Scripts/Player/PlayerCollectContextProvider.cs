@@ -3,17 +3,19 @@ using UnityEngine;
 
 public class PlayerCollectContextProvider : MonoBehaviour, ICollectContextProvider
 {
-    public Action<int> AddScoreHook;
-    private PowerupManager _power;
+    public Action<int> OnAddScore;
+    private PowerupManager _powerManager;
 
     void Awake()
     {
-        _power = GetComponent<PowerupManager>();    
+        _powerManager = GetComponent<PowerupManager>(); 
+        if(GameManager.gameManager != null)
+            OnAddScore = GameManager.gameManager.AddScore;
     }
     
     public CollectContext Build()
     {
-        return new CollectContext(gameObject, _power, AddScoreHook);
+        return new CollectContext(gameObject, _powerManager, OnAddScore);
     }
 
 }

@@ -12,7 +12,9 @@ public class CoinPickup : MonoBehaviour, ICollectible
 
     public void Collect(in CollectContext playerContext)
     {
-        Debug.Log($"+{points} coin collected by {playerContext.Player.name}");
+        if (!playerContext.TryAddScore(points))
+            Debug.LogWarning($"No score hook connected; coin +{points} not applied.", this);
+
         Destroy(gameObject);
     }
 }

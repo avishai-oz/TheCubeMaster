@@ -9,11 +9,15 @@ using UnityEngine;
     {
         private ICollectContextProvider _provider;
 
-        void Awake() => _provider = GetComponent<ICollectContextProvider>();
+        void Awake()
+        {
+            _provider = GetComponent<ICollectContextProvider>();
+        }
 
         void OnTriggerEnter(Collider other)
         {
             if (_provider == null) return;
+            
             var playerContext = _provider.Build();
 
             foreach (var mb in other.GetComponents<MonoBehaviour>())
