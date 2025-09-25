@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class GameManagerProvider : MonoBehaviour
+public class GameUIPresenter : MonoBehaviour
     {
         [Header("UI")]
         public TextMeshProUGUI speedText;
@@ -13,18 +13,30 @@ public class GameManagerProvider : MonoBehaviour
 
         void Awake()
         {
-            if (GameManager.gameManager != null)
-            {
-                GameManager.gameManager.OnScoreChanged += UpdateScoreUI;
-                UpdateScoreUI(GameManager.gameManager.Score, GameManager.gameManager.targetScore);
-                GameManager.gameManager.OnWin += WinGame;
-            }
+            
         }
         void Update()
         {
             updateStatsUI();
         }
         
+        void OnEnable() {
+            var gm = GameManager.gameManager;
+            if (gm != null) {
+                gm.OnScoreChanged += UpdateScoreUI;
+                gm.OnWin += WinGame;
+                UpdateScoreUI(gm.Score, gm.targetScore);
+            }
+        }
+
+        void OnDisable() {
+            var gm = GameManager.gameManager;
+            if (gm != null) {
+                gm.OnScoreChanged -= UpdateScoreUI;
+                gm.OnWin -= WinGame;
+            }
+        }
+
         void updateStatsUI() {
             if (GameManager.gameManager != null && player != null)
             {

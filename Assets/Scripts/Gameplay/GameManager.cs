@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using TMPro; 
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class GameManager : MonoBehaviour
     
     public static GameManager gameManager { get; private set; }
 
-
+    
     void Awake()
     {
         if (gameManager != null && gameManager != this)
@@ -22,10 +21,11 @@ public class GameManager : MonoBehaviour
         }
         gameManager = this;
     }
+    
     void Start()
     {
         Score = 0;
-        OnScoreChanged?.Invoke(targetScore, Score);
+        OnScoreChanged?.Invoke(Score, targetScore);
     }
     
     public void AddScore(int amount) {
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         if (Score >= targetScore) {
             OnWin?.Invoke();
         }
+        Debug.Log("Provider/AddScoreHook connected: " + Score + "/" + targetScore);
     }
     
 }

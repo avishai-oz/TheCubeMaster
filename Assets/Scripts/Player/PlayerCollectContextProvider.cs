@@ -8,9 +8,18 @@ public class PlayerCollectContextProvider : MonoBehaviour, ICollectContextProvid
 
     void Awake()
     {
-        _powerManager = GetComponent<PowerupManager>(); 
-        if(GameManager.gameManager != null)
+        _powerManager = GetComponent<PowerupManager>();
+        TryBindScore();  
+    }
+
+    void OnEnable()  => TryBindScore(); 
+    void Start()     => TryBindScore(); 
+    
+    void TryBindScore()
+    {
+        if (OnAddScore == null && GameManager.gameManager != null)
             OnAddScore = GameManager.gameManager.AddScore;
+        Debug.Log("Provider/AddScoreHook connected: " + (OnAddScore != null));
     }
     
     public CollectContext Build()
