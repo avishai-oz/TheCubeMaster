@@ -15,6 +15,11 @@ public class GameUIPresenter : MonoBehaviour
         {
             
         }
+        
+        void Start() {
+            Debug.Log($"[UI] scoreText assigned? {(scoreText!=null)}", this);
+        }
+        
         void Update()
         {
             updateStatsUI();
@@ -22,18 +27,19 @@ public class GameUIPresenter : MonoBehaviour
         
         void OnEnable() {
             var gm = GameManager.gameManager;
+            Debug.Log($"[UI] OnEnable. gm? {(gm!=null)}", this);
             if (gm != null) {
                 gm.OnScoreChanged += UpdateScoreUI;
-                gm.OnWin += WinGame;
+                gm.OnWin          += WinGame;
                 UpdateScoreUI(gm.Score, gm.targetScore);
             }
         }
-
         void OnDisable() {
             var gm = GameManager.gameManager;
+            Debug.Log("[UI] OnDisable", this);
             if (gm != null) {
                 gm.OnScoreChanged -= UpdateScoreUI;
-                gm.OnWin -= WinGame;
+                gm.OnWin          -= WinGame;
             }
         }
 
@@ -43,7 +49,7 @@ public class GameUIPresenter : MonoBehaviour
                 var rb = player.GetComponent<Rigidbody>();
                 if (rb)
                 {
-                    float speed = rb.velocity.magnitude;
+                    float speed = rb.linearVelocity.magnitude;
                     float height = player.position.y;
                     if (speedText) speedText.text = $"Speed: {speed:0.0} m/s";
                     if (hgtText) hgtText.text = $"Height: {height:0.0} m";
@@ -52,6 +58,7 @@ public class GameUIPresenter : MonoBehaviour
         }
         
         void UpdateScoreUI(int Score, int targetScore) {
+            Debug.Log("UpdateScoreUI");
             if (scoreText) scoreText.text = $"Score: {Score}/{targetScore}";
         }
         

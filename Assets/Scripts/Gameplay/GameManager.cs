@@ -29,12 +29,13 @@ public class GameManager : MonoBehaviour
     }
     
     public void AddScore(int amount) {
+        Debug.Log($"[GM] AddScore({amount}) before={Score}", this);
         Score = Mathf.Max(0, Score + amount);
-        OnScoreChanged?.Invoke(Score,  targetScore);  
+        OnScoreChanged?.Invoke(Score, targetScore);
         if (Score >= targetScore) {
+            Debug.Log("[GM] Win!", this);
             OnWin?.Invoke();
         }
-        Debug.Log("Provider/AddScoreHook connected: " + Score + "/" + targetScore);
     }
     
 }

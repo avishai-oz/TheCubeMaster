@@ -13,15 +13,17 @@ public class PlayerCollectContextProvider : MonoBehaviour, ICollectContextProvid
     }
 
     void OnEnable()  => TryBindScore(); 
-    void Start()     => TryBindScore(); 
-    
+    void Start()     => TryBindScore();
+
     void TryBindScore()
     {
         if (OnAddScore == null && GameManager.gameManager != null)
+        {
             OnAddScore = GameManager.gameManager.AddScore;
-        Debug.Log("Provider/AddScoreHook connected: " + (OnAddScore != null));
+            Debug.Log("[Provider] AddScoreHook connected ✅", this);
+        }
     }
-    
+
     public CollectContext Build()
     {
         return new CollectContext(gameObject, _powerManager, OnAddScore);
