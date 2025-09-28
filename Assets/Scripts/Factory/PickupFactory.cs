@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Enums;
 using Factory;
 
+
 [RequireComponent(typeof(BoxCollider))]
 public class PickupFactory : MonoBehaviour , IPickupFactory
 {
@@ -36,12 +37,24 @@ public class PickupFactory : MonoBehaviour , IPickupFactory
             _ => null
         };
         if (kindPrefab == null) return null;
-        return Instantiate(kindPrefab, position, Quaternion.identity, parent);
+
+        var oldParent = parent ? parent : transform;
+        var go = Instantiate(kindPrefab, position, Quaternion.identity, oldParent);
+
+        var respawn = go.GetComponent<PickupRespawn>() ?? go.AddComponent<PickupRespawn>();
+        respawn.factory = this;
+
+        return go;
     }
 
     void Awake()
     {
         if (!area) area = GetComponent<BoxCollider>();
+    }
+    
+    void Start()
+    {
+        SpawnInitial();
     }
 
     public Vector3 GetRandomPointInArea()
@@ -53,4 +66,64 @@ public class PickupFactory : MonoBehaviour , IPickupFactory
         float z = Random.Range(center.z - ext.z, center.z + ext.z);
         return new Vector3(x, y, z);
     }
+    
+    public bool TryPickFreePoint(out Vector3 point, int maxAttempts = 30)
+    {
+        float minSqr = minDistance * minDistance;
+
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            var p = GetRandomPointInArea();
+            bool tooClose = false;
+
+            foreach (var op in _occupied)
+            {
+                if ((p - op).sqrMagnitude < minSqr) { tooClose = true; break; }
+            }
+
+            if (!tooClose)
+            {
+                point = p;
+                _occupied.Add(point);
+                return true;
+            }
+        }
+
+        point = GetRandomPointInArea();
+        _occupied.Add(point);
+        return true;
+    }
+    
+    public bool Relocate(Transform item)
+    {
+        if (TryPickFreePoint(out var p))
+        {
+            item.position = p;
+            var rb = item.GetComponent<Rigidbody>();
+            if (rb) rb.velocity = UnityEngine.Vector3.zero;
+            return true;
+        }
+        return false;
+    }
+    public void SpawnInitial()
+    {
+        _occupied.Clear();
+
+        SpawnManyByKind(PickupKind.Coin,  coinsCount);
+        SpawnManyByKind(PickupKind.Speed, speedCount);
+        SpawnManyByKind(PickupKind.Jump,  jumpCount);
+        SpawnManyByKind(PickupKind.Size,  sizeCount);
+    }
+    
+    void SpawnManyByKind(PickupKind kind, int count)
+    {
+        if (count <= 0) return;
+
+        for (int i = 0; i < count; i++)
+        {
+            if (TryPickFreePoint(out var p))
+                Create(kind, p, transform); 
+        }
+    }
+   
 }

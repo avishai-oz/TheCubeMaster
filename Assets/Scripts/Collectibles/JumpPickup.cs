@@ -18,6 +18,5 @@ public class JumpPickup : MonoBehaviour, ICollectible
             else
                 Debug.LogWarning("No PowerupManager on Player; JumpPickup ignored.", this);
 
-            Destroy(gameObject);
         }
 }

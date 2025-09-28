@@ -17,6 +17,5 @@ using UnityEngine;
             else
                 Debug.LogWarning("No PowerupManager on Player; SizePickup ignored.", this);
 
-            Destroy(gameObject);
         }
     }

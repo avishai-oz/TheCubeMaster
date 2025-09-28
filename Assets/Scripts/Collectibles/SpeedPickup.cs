@@ -16,8 +16,7 @@ using UnityEngine;
                 playerContext.Power.Apply(PowerupTypes.PowerupType.Speed, multiplier, durationSeconds);
             else
                 Debug.LogWarning("No PowerupManager on Player; SpeedPickup ignored.", this);
-
-            Destroy(gameObject);
+            
         }
     }
 
