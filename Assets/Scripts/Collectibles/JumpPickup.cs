@@ -17,6 +17,8 @@ public class JumpPickup : MonoBehaviour, ICollectible
                 playerContext.Power.Apply(PowerupTypes.PowerupType.Jump, multiplier, durationSeconds);
             else
                 Debug.LogWarning("No PowerupManager on Player; JumpPickup ignored.", this);
-
+            
+            var respawn = GetComponent<PickupRespawn>();
+            respawn.Respawn();
         }
 }

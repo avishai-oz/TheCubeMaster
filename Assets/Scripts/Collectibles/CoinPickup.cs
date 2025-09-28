@@ -14,5 +14,7 @@ public class CoinPickup : MonoBehaviour, ICollectible
     {
         if (!playerContext.TryAddScore(points))
             Debug.LogWarning($"No score hook connected; coin +{points} not applied.", this);
+        var respawn = GetComponent<PickupRespawn>();
+        respawn.Respawn();
     }
 }
