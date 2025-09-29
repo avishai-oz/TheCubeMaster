@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3389414}
   - component: {fileID: 2389414}
   - component: {fileID: -2529588080595512789}
-  - component: {fileID: -8714589024759096532}
+  - component: {fileID: -927043570482340973}
   m_Layer: 0
   m_Name: Arrows Green
   m_TagString: Untagged
@@ -113,7 +113,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7ac2319ff4942e64d8b25c0a7b6295fb, type: 3}
---- !u!114 &-8714589024759096532
+--- !u!114 &-927043570482340973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 189414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9edf9fcdd04249648fb7d715b9253ccd, type: 3}
+  m_Script: {fileID: 11500000, guid: a00ac082d805493e9fc3c0f5862a9cd2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SizePickup
-  multiplier: 1.25
+  m_EditorClassIdentifier: Assembly-CSharp::JumpPickup
+  multiplier: 2
   durationSeconds: 12

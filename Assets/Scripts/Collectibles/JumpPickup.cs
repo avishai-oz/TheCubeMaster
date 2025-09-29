@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class JumpPickup : MonoBehaviour, ICollectible
 {
-        public float multiplier = 1.5f;
+        public float multiplier = 2f;
         public float durationSeconds = 12f;
 
         private void Reset()

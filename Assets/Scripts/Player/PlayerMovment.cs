@@ -8,19 +8,11 @@ namespace Player
         public float speed = 6f;
         public float acceleration = 12f;
 
-        [Header("Facing")]
-        public bool rotateToFaceMove = true;        
-        public bool rotateOnlyWhenMovingForward = true; 
-        public float turnSpeedDegPerSec = 180f;
-
         [Header("Jump")]
         public float jumpForce = 5.5f;
         public float groundCheckDistance = 0.25f;
         public LayerMask groundMask;
-            
-        [Header("Camera")]
-        public Transform cameraTransform;
-
+        
         Rigidbody _rb;
         Collider _col;
         
@@ -34,17 +26,15 @@ namespace Player
             groundMask= LayerMask.GetMask("Ground"); 
             _rb = GetComponent<Rigidbody>();
             _col = GetComponent<Collider>();
-            if (cameraTransform == null && Camera.main != null)
-                cameraTransform = Camera.main.transform;
             if (powerupManager == null)
                 powerupManager = GetComponent<PowerupManager>() ?? gameObject.AddComponent<PowerupManager>();
         }
 
         void Update()
         {
-            _inputH = Input.GetAxisRaw("Horizontal");
-            _inputV = Input.GetAxisRaw("Vertical");
-
+            _inputH = Mathf.MoveTowards(_inputH, Input.GetAxis("Horizontal"), 6f * Time.deltaTime);
+            _inputV = Mathf.MoveTowards(_inputV, Input.GetAxis("Vertical"),   6f * Time.deltaTime);
+            
             if (Input.GetButtonDown("Jump"))
             {
                 _jumpQueued = true;
@@ -53,58 +43,39 @@ namespace Player
 
         void FixedUpdate()
         {
-            // כיוון תנועה יחסית למצלמה
-            Vector3 direction;
-            if (cameraTransform != null)
-            {
-                Vector3 fwd = cameraTransform.forward; fwd.y = 0f; fwd.Normalize();
-                Vector3 right = cameraTransform.right; right.y = 0f; right.Normalize();
-                direction = right * _inputH + fwd * _inputV;
-            }
-            else
-            {
-                direction = new Vector3(_inputH, 0f, _inputV);
-            }
-            if (direction.sqrMagnitude > 1f) direction.Normalize();
-            
-            float speedMult = (powerupManager != null) ? powerupManager.SpeedMult : 1f;
-            Vector3 targetPlanarVel = direction * (speed * speedMult);
-            Vector3 vel = _rb.linearVelocity;
+            // כיוון תנועה RELATIVE ל-orientation (שה-CameraLook מסובב)
+            Vector3 fwd   = transform.forward; fwd.y = 0f; fwd.Normalize();
+            Vector3 right = transform.right;   right.y = 0f; right.Normalize();
+            Vector3 dir = right * _inputH + fwd * _inputV;
+            if (dir.sqrMagnitude > 1f) dir.Normalize();
+
+            // תאוצה למהירות מטרה
+            float speedMult = powerupManager ? powerupManager.SpeedMult : 1f;
+            Vector3 targetPlanar = dir * (speed * speedMult);
+
+            Vector3 vel    = _rb.linearVelocity;
             Vector3 planar = new Vector3(vel.x, 0f, vel.z);
-            Vector3 newPlanar = Vector3.MoveTowards(planar, targetPlanarVel, acceleration * Time.fixedDeltaTime);
-            vel.x = newPlanar.x;
-            vel.z = newPlanar.z;
 
-            if (_jumpQueued && IsGrounded())
+            // שליטה חלשה יותר באוויר (אופציונלי)
+            float airControl = 0.45f;
+            bool grounded = IsGrounded();
+            float accelNow = acceleration * (grounded ? 1f : airControl);
+
+            Vector3 newPlanar = Vector3.MoveTowards(planar, targetPlanar, accelNow * Time.fixedDeltaTime);
+            vel.x = newPlanar.x; vel.z = newPlanar.z;
+
+            // קפיצה
+            if (_jumpQueued && grounded)
             {
-                _jumpQueued = false; 
+                _jumpQueued = false;
                 vel.y = 0f;
-                
-                float jumpMult = (powerupManager != null ? powerupManager.JumpMult : 1f);
-
+                float jumpMult = powerupManager ? powerupManager.JumpMult : 1f;
                 _rb.linearVelocity = vel;
                 _rb.AddForce(Vector3.up * (jumpForce * jumpMult), ForceMode.VelocityChange);
             }
             else
             {
                 _rb.linearVelocity = vel;
-            }
-
-
-            if (rotateToFaceMove)
-            {
-                Vector3 faceDir = direction;
-                if (rotateOnlyWhenMovingForward && _inputV < 0f)
-                {
-                    faceDir = new Vector3(transform.forward.x, 0f, transform.forward.z);
-                }
-
-                if (faceDir.sqrMagnitude > 0.0001f)
-                {
-                    Quaternion target = Quaternion.LookRotation(faceDir, Vector3.up);
-                    float maxDeg = turnSpeedDegPerSec * Time.fixedDeltaTime;
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, target, maxDeg);
-                }
             }
         }
 

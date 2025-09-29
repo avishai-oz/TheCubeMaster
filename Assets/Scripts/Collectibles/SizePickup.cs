@@ -5,7 +5,7 @@ using UnityEngine;
     [RequireComponent(typeof(Collider))]
     public class SizePickup : MonoBehaviour, ICollectible
     {
-        public float multiplier = 1.25f;
+        public float multiplier = 2f;
         public float durationSeconds = 12f;
 
         void Reset() => GetComponent<MeshCollider>().isTrigger = true;

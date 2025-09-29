@@ -9,15 +9,19 @@ public class GameUIPresenter : MonoBehaviour
         public TextMeshProUGUI scoreText;
         public GameObject winPanel;
         
+        public GameObject gameStatus;
+
         public Transform player;
 
         void Awake()
         {
-            
+
         }
         
         void Start() {
             Debug.Log($"[UI] scoreText assigned? {(scoreText!=null)}", this);
+            gameStatus.SetActive(true);
+
         }
         
         void Update()

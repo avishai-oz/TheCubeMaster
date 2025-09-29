@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3310512}
   - component: {fileID: 2310512}
   - component: {fileID: -1017159112328566913}
-  - component: {fileID: -2471577863708760635}
+  - component: {fileID: -789702320959144863}
   m_Layer: 0
   m_Name: Poison Purple
   m_TagString: Untagged
@@ -113,7 +113,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 82da63b050bfebd4f80a66f7ded30706, type: 3}
---- !u!114 &-2471577863708760635
+--- !u!114 &-789702320959144863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 110512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85150353d92e4feeb4d38d432633cc85, type: 3}
+  m_Script: {fileID: 11500000, guid: 9edf9fcdd04249648fb7d715b9253ccd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpeedPickup
-  multiplier: 1.5
+  m_EditorClassIdentifier: Assembly-CSharp::SizePickup
+  multiplier: 2
   durationSeconds: 12

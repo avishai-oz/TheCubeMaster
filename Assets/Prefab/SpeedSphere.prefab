@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85150353d92e4feeb4d38d432633cc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeedPickup
-  multiplier: 1.5
+  multiplier: 2
   durationSeconds: 12
 --- !u!1 &4249650935139719518
 GameObject:
