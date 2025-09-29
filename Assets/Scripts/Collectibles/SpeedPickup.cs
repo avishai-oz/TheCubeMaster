@@ -17,6 +17,8 @@ using UnityEngine;
             else
                 Debug.LogWarning("No PowerupManager on Player; SpeedPickup ignored.", this);
             
+            var respawn = GetComponent<PickupRespawn>();
+            respawn.Respawn();
         }
     }
 

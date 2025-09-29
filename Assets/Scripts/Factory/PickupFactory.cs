@@ -22,7 +22,8 @@ public class PickupFactory : MonoBehaviour , IPickupFactory
     public int speedCount = 2;
     public int jumpCount  = 2;
     public int sizeCount  = 2;
-    
+
+    public GameObject mesh;
     private readonly List<Vector3> _occupied = new List<Vector3>();
 
     
@@ -100,7 +101,7 @@ public class PickupFactory : MonoBehaviour , IPickupFactory
         {
             item.position = p;
             var rb = item.GetComponent<Rigidbody>();
-            if (rb) rb.velocity = UnityEngine.Vector3.zero;
+            if (rb) rb.linearVelocity = UnityEngine.Vector3.zero;
             return true;
         }
         return false;
@@ -122,6 +123,7 @@ public class PickupFactory : MonoBehaviour , IPickupFactory
         for (int i = 0; i < count; i++)
         {
             if (TryPickFreePoint(out var p))
+                p.y = mesh.transform.localPosition.y + 1f;
                 Create(kind, p, transform); 
         }
     }

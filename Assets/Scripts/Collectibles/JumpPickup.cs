@@ -8,7 +8,7 @@ public class JumpPickup : MonoBehaviour, ICollectible
 
         private void Reset()
         {
-            GetComponent<Collider>().isTrigger = true;
+            GetComponent<MeshCollider>().isTrigger = true;
         }
 
         public void Collect(in CollectContext playerContext)

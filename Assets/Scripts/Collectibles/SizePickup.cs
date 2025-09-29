@@ -8,7 +8,7 @@ using UnityEngine;
         public float multiplier = 1.25f;
         public float durationSeconds = 12f;
 
-        void Reset() => GetComponent<Collider>().isTrigger = true;
+        void Reset() => GetComponent<MeshCollider>().isTrigger = true;
 
         public void Collect(in CollectContext playerContext)
         {
@@ -16,6 +16,8 @@ using UnityEngine;
                 playerContext.Power.Apply(PowerupTypes.PowerupType.Size, multiplier, durationSeconds);
             else
                 Debug.LogWarning("No PowerupManager on Player; SizePickup ignored.", this);
-
+            
+            var respawn = GetComponent<PickupRespawn>();
+            respawn.Respawn();
         }
     }

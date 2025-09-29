@@ -47,7 +47,6 @@ namespace Player
 
             if (Input.GetButtonDown("Jump"))
             {
-                Debug.Log("Jump Pressed");
                 _jumpQueued = true;
             }
         }
